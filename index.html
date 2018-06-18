@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<form id="form">
+	<label>First Name : </label>
+	<input type="text" name="fname"></br>
+	<label>Last Name : </label>
+	<input type="text" name="lname"></br>
+	<button>Save</button>
+</form>
+
+<script type="text/javascript">
+	function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+// Start file download.
+// download("hello.txt","This is the content of my file :)");
+
+document.getElementById('form').addEventListener('submit',function(){
+	var fname = document.getElementsByName('fname')[0].value;
+	var lname = document.getElementsByName('lname')[0].value;
+	download("hello.txt",
+		"First Name : "+fname+
+		"\r\nLast Name : "+lname
+		)
+});
+</script>
+</body>
+</html>
